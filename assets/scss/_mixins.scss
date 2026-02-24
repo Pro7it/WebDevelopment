@@ -20,6 +20,7 @@
   border-radius: 4px;
   cursor: pointer;
   font-weight: bold;
+  font-size: inherit;
   transition: background-color 0.3s;
 
   &:hover {
@@ -29,6 +30,18 @@
 
 @mixin mobile {
   @media (max-width: 500px) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (max-width: 768px) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: 1025px) {
     @content;
   }
 }
