@@ -1,0 +1,277 @@
+// style.scss
+@use "variables";
+@use "mixins";
+@use "sass:color";
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  font-family: variables.$font-stack;
+  margin: 0;
+  padding: 0;
+  background-color: variables.$bg-color;
+  color: variables.$text-color;
+  line-height: 1.5;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px;
+}
+
+header {
+  width: 100%;
+  @include mixins.flex-center;
+  background-color: variables.$card-bg;
+  height: variables.$header-height;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  justify-content: space-between;
+  padding: 0 40px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+
+  .logo {
+    font-size: 1.5rem;
+    font-weight: 900;
+    color: variables.$primary-color;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+
+  nav {
+    ul {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+
+      li {
+        a {
+          text-decoration: none;
+          color: variables.$text-color;
+          font-weight: 500;
+          transition: color 0.3s;
+
+          &:hover,
+          &.active {
+            color: variables.$primary-color;
+          }
+        }
+      }
+    }
+
+    @include mixins.mobile {
+      display: none; // TODO: Placeholder for mobile menu
+    }
+  }
+}
+
+.btn-primary {
+  @include mixins.button-base(variables.$primary-color);
+}
+
+.btn-secondary {
+  @include mixins.button-base(variables.$secondary-color);
+}
+
+.btn-danger {
+  @include mixins.button-base(variables.$error-color);
+}
+
+.form-container {
+  background: variables.$card-bg;
+  padding: 40px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  max-width: 400px;
+  margin: 40px auto;
+
+  h2 {
+    color: variables.$primary-color;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  .form-group {
+    margin-bottom: 20px;
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: bold;
+      color: variables.$text-color;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid color.scale(variables.$bg-color, $lightness: +10%);
+      background-color: variables.$bg-color;
+      color: variables.$text-color;
+      border-radius: 4px;
+      box-sizing: border-box;
+
+      &:focus {
+        border-color: variables.$primary-color;
+        outline: none;
+      }
+    }
+  }
+
+  .form-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+  }
+}
+
+.admin-panel {
+  .heder {
+    @include mixins.flex-between;
+    margin-bottom: 20px;
+  }
+
+  .user-table-container {
+    background: variables.$card-bg;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    overflow-x: auto;
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      color: variables.$text-color;
+
+      th,
+      td {
+        padding: 12px 15px;
+        text-align: left;
+        border-bottom: 1px solid
+          color.scale(variables.$bg-color, $lightness: +10%);
+      }
+
+      th {
+        background-color: variables.$secondary-color;
+        color: variables.$text-color;
+      }
+
+      tr:hover {
+        background-color: color.scale(variables.$bg-color, $lightness: 5%);
+      }
+
+      .actions {
+        display: flex;
+        gap: 10px;
+      }
+    }
+  }
+}
+
+.hero {
+  text-align: center;
+  padding: 60px 20px;
+  background-color: variables.$card-bg;
+  margin-bottom: 40px;
+  border-radius: 8px;
+
+  h1 {
+    font-size: 3rem;
+    color: variables.$text-color;
+    margin-bottom: 10px;
+
+    span {
+      color: variables.$primary-color;
+    }
+  }
+
+  p {
+    font-size: 1.2rem;
+    color: variables.$text-color;
+    max-width: 600px;
+    margin: 0 auto 30px;
+  }
+}
+
+.menu-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 30px;
+
+  .menu-item {
+    background: variables.$card-bg;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s;
+
+    &:hover {
+      transform: translateY(-5px);
+    }
+
+    .image-placeholder {
+      height: 200px;
+      background: linear-gradient(
+        45deg,
+        variables.$secondary-color,
+        variables.$primary-color
+      );
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: variables.$text-color;
+      font-size: 0.9rem;
+    }
+
+    .content {
+      padding: 20px;
+
+      h3 {
+        margin: 0 0 10px;
+        color: variables.$text-color;
+      }
+
+      .price {
+        color: variables.$accent-color;
+        font-weight: bold;
+        font-size: 1.2rem;
+        display: block;
+        margin-bottom: 10px;
+      }
+
+      p {
+        font-size: 0.9rem;
+        color: variables.$text-color;
+        margin-bottom: 20px;
+      }
+    }
+  }
+}
+
+footer {
+  background-color: variables.$secondary-color;
+  color: variables.$text-color;
+  text-align: center;
+  padding: 40px 20px;
+  margin-top: auto;
+
+  p {
+    opacity: 0.7;
+    font-size: 0.9rem;
+  }
+}
