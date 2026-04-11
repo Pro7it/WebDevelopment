@@ -1,0 +1,29 @@
+{
+  "name": "webdevelopment",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "browser-sync start --server --files \"*.html, assets/css/*.css, assets/js/*.js\"",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint **/*.js --ignore-pattern node_modules/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Pro7it/WebDevelopment.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Pro7it/WebDevelopment/issues"
+  },
+  "homepage": "https://github.com/Pro7it/WebDevelopment#readme",
+  "devDependencies": {
+    "browser-sync": "^3.0.4",
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.32.0"
+  }
+}

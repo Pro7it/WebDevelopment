@@ -22,6 +22,19 @@ body {
   min-height: 100vh;
 }
 
+a {
+  color: #8e44ad;
+  text-decoration: none;
+}
+
+a:visited {
+  color: #8e44ad;
+}
+
+a:hover {
+  color: #ac6dc6;
+}
+
 main {
   flex: 1;
   width: 100%;
@@ -83,7 +96,6 @@ header nav ul {
     justify-content: center;
   }
 }
-
 .btn-primary {
   padding: 12px 24px;
   background-color: #8e44ad;
@@ -94,9 +106,16 @@ header nav ul {
   font-weight: bold;
   font-size: inherit;
   transition: background-color 0.3s;
+  text-decoration: none;
+  text-align: center;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
+
 .btn-primary:hover {
-  background-color: rgb(127.8, 61.2, 155.7);
+  background-color: rgb(123.636, 59.4, 150.3);
 }
 
 .btn-secondary {
@@ -109,7 +128,14 @@ header nav ul {
   font-weight: bold;
   font-size: inherit;
   transition: background-color 0.3s;
+  text-decoration: none;
+  text-align: center;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
+
 .btn-secondary:hover {
   background-color: rgb(39.6, 55.8, 72);
 }
@@ -124,7 +150,14 @@ header nav ul {
   font-weight: bold;
   font-size: inherit;
   transition: background-color 0.3s;
+  text-decoration: none;
+  text-align: center;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
+
 .btn-danger:hover {
   background-color: rgb(227.8109589041, 52.2150684932, 34.0890410959);
 }
@@ -391,13 +424,32 @@ footer p {
   background: #16213e;
   border-radius: 8px;
   padding: 20px;
-  height: fit-content;
+  height: 500px;
+  display: flex;
+  flex-direction: column;
 }
+
 .tracklist-container h3 {
   margin-bottom: 15px;
   border-bottom: 1px solid #2c3e50;
   padding-bottom: 10px;
+  flex-shrink: 0;
 }
+
+.track-list {
+  overflow-y: auto;
+  flex-grow: 1;
+}
+
+.track-list::-webkit-scrollbar {
+  width: 6px;
+}
+
+.track-list::-webkit-scrollbar-thumb {
+  background: #8e44ad;
+  border-radius: 3px;
+}
+
 .tracklist-container .track-item {
   display: flex;
   align-items: center;

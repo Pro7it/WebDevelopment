@@ -27,6 +27,19 @@ body {
   min-height: 100vh;
 }
 
+a {
+  color: variables.$primary-color;
+  text-decoration: none;
+
+  &:visited {
+    color: variables.$primary-color;
+  }
+
+  &:hover {
+    color: color.scale(variables.$primary-color, $lightness: +20%);
+  }
+}
+
 main {
   flex: 1;
   width: 100%;
@@ -90,14 +103,32 @@ header {
 
 .btn-primary {
   @include mixins.button-base(variables.$primary-color);
+  text-decoration: none;
+  text-align: center;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .btn-secondary {
   @include mixins.button-base(variables.$secondary-color);
+  text-decoration: none;
+  text-align: center;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .btn-danger {
   @include mixins.button-base(variables.$error-color);
+  text-decoration: none;
+  text-align: center;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 // Utility & Global Component Adjustments

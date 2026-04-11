@@ -8,67 +8,24 @@
   </head>
   <body class="dark-theme">
     <header>
-      <a href="index.html" class="logo">Zak muse</a>
+      <a href="#/" class="logo">Zak muse</a>
       <nav>
         <ul>
-          <li><a href="index.html" class="active">Home</a></li>
-          <li><a href="pages/login.html">Login</a></li>
+          <li><a href="#/" id="nav-home">Home</a></li>
+          <li><a href="#/login" id="nav-login">Login</a></li>
+          <li><a href="#/admin" id="nav-admin">Admin</a></li>
         </ul>
       </nav>
     </header>
 
-    <main>
-      <section class="hero">
-        <h1>Create. Share. <span>Collaborate.</span></h1>
-        <p>
-          Make your own private soundtracks or join the world in creating public
-          playlists. Everyone can edit the vibes.
-        </p>
-        <div class="hero-actions">
-          <button class="btn-primary">Create Playlist</button>
-          <button class="btn-secondary">Join Collaboration</button>
-        </div>
-      </section>
-
-      <h2>Featured Public Playlists</h2>
-      <section class="menu-grid">
-        <article class="menu-item">
-          <div class="image-placeholder">Indie</div>
-          <div class="content">
-            <h3>Best of indie</h3>
-            <span class="price">Public</span>
-            <p>Perfect for study or work, or chiling ;)</p>
-            <a href="pages/watch.html" class="btn-secondary btn-link">Open Playlist</a>
-          </div>
-        </article>
-
-        <article class="menu-item">
-          <div class="image-placeholder">Winter 2026</div>
-          <div class="content">
-            <h3>Winter Vibes</h3>
-            <span class="price">Public</span>
-            <p>The best vibe of this winter!</p>
-            <a href="pages/watch.html" class="btn-secondary btn-link">Open Playlist</a>
-          </div>
-        </article>
-
-        <article class="menu-item">
-          <div class="image-placeholder">Synthwave</div>
-          <div class="content">
-            <h3>Cyberpunk Nights</h3>
-            <span class="price">Private</span>
-            <p>
-              My own projects of music, created via
-              <a href="https://strudel.cc/">strudel</a>.
-            </p>
-            <a href="pages/edit_playlist.html" class="btn-secondary btn-link">Edit Tracks</a>
-          </div>
-        </article>
-      </section>
+    <main id="app">
+      <p style="text-align: center; padding: 50px;">Loading application...</p>
     </main>
 
     <footer>
       <p>&copy; 2026 Zak muse - Built for Variant 9. Web Development Lab.</p>
     </footer>
+
+    <script src="assets/js/app.js"></script>
   </body>
 </html>
