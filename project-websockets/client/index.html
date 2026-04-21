@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WS Alerts Pro</title>
+    <style>
+        body { font-family: sans-serif; background: #121212; color: white; display: flex; flex-direction: column; align-items: center; padding: 50px; }
+        #alerts { width: 100%; max-width: 500px; margin-top: 20px; }
+        .alert { padding: 15px; margin-bottom: 10px; border-radius: 8px; border-left: 5px solid #007bff; background: #1e1e1e; animation: slideIn 0.3s ease; }
+        .alert.warning { border-left-color: #ffc107; }
+        .alert.danger { border-left-color: #dc3545; }
+        .status { margin-bottom: 20px; font-size: 0.9em; color: #888; }
+        .status.online { color: #28a745; }
+        button { padding: 10px 20px; cursor: pointer; background: #007bff; border: none; color: white; border-radius: 5px; }
+        @keyframes slideIn { from { transform: translateX(50px); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+    </style>
+</head>
+<body>
+    <h1>Real-time Alerts</h1>
+    <div id="status" class="status">Connecting...</div>
+    
+    <div style="margin-bottom: 20px;">
+        <input type="text" id="msgInput" placeholder="Enter alert message..." style="padding: 10px; border-radius: 5px; border: none;">
+        <button onclick="sendTestAlert()">Send Alert</button>
+    </div>
+
+    <div id="alerts"></div>
+
+    <script>
+        const alertsDiv = document.getElementById('alerts');
+        const statusDiv = document.getElementById('status');
+        const socket = new WebSocket(`ws://${window.location.host}`);
+
+        socket.onopen = () => {
+            statusDiv.innerText = '● Connected (Live)';
+            statusDiv.classList.add('online');
+        };
+
+        socket.onclose = () => {
+            statusDiv.innerText = '○ Disconnected';
+            statusDiv.classList.remove('online');
+        };
+
+        socket.onmessage = (event) => {
+            const data = JSON.parse(event.data);
+            addAlert(data);
+        };
+
+        function addAlert(data) {
+            const el = document.createElement('div');
+            el.className = `alert ${data.type}`;
+            el.innerHTML = `
+                <strong>[${new Date(data.timestamp).toLocaleTimeString()}]</strong>: ${data.message}
+            `;
+            alertsDiv.prepend(el);
+            
+            // Remove alert after 10 seconds
+            setTimeout(() => el.remove(), 10000);
+        }
+
+        async function sendTestAlert() {
+            const input = document.getElementById('msgInput');
+            if (!input.value) return;
+            
+            await fetch('/send-alert', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ message: input.value, type: 'info' })
+            });
+            input.value = '';
+        }
+    </script>
+</body>
+</html>

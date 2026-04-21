@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "browser-sync start --server --files \"*.html, assets/css/*.css, assets/js/*.js\"",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "lint": "eslint **/*.js --ignore-pattern node_modules/"
   },
   "repository": {
@@ -24,6 +24,8 @@
     "browser-sync": "^3.0.4",
     "eslint": "^6.8.0",
     "eslint-config-airbnb-base": "^14.2.1",
-    "eslint-plugin-import": "^2.32.0"
+    "eslint-plugin-import": "^2.32.0",
+    "jest": "^30.3.0",
+    "jest-environment-jsdom": "^30.3.0"
   }
 }
